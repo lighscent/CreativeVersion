@@ -1,0 +1,13 @@
+{
+	"required": true,
+	"package": "com.github.xl1te.creativeversion.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"client": [
+		"AbstractContainerScreenMixin",
+		"GuiHotbarMixin",
+		"HudHotbarMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

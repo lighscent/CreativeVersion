@@ -1,0 +1,6 @@
+{
+	"creativeversion.tooltip.absent": "Missing from server %s",
+	"creativeversion.announce": "Server %s (%s) — %s items marked.",
+	"creativeversion.source.via": "ViaVersion",
+	"creativeversion.source.detected": "detected"
+}

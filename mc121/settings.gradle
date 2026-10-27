@@ -1,0 +1,26 @@
+pluginManagement {
+	repositories {
+		maven {
+			name = 'Fabric'
+			url = 'https://maven.fabricmc.net/'
+		}
+		gradlePluginPortal()
+	}
+}
+
+plugins {
+	id 'fabric-loom' version '1.18.4' apply false
+}
+
+rootProject.name = 'creativeversion-mc121'
+include 'v1_21_10'
+include 'v1_21_11'
+
+// Single version source: root gradle.properties (mod_version).
+def modProps = new Properties()
+file('../gradle.properties').withInputStream { modProps.load(it) }
+gradle.projectsLoaded {
+	gradle.rootProject.allprojects {
+		version = modProps.getProperty('mod_version')
+	}
+}

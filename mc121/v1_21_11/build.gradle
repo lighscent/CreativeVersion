@@ -1,0 +1,46 @@
+plugins {
+	id 'fabric-loom'
+}
+
+def mc = '1.21.11'
+
+base {
+	archivesName = "creativeversion-${mc}"
+}
+
+repositories {
+	mavenCentral()
+	maven { url = 'https://maven.terraformersmc.com/' }
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${mc}"
+	mappings loom.officialMojangMappings()
+	modImplementation "net.fabricmc:fabric-loader:0.20.1"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:0.141.6+1.21.11"
+}
+
+sourceSets {
+	main {
+		java { srcDirs rootProject.file('../common/src/main/java'), rootProject.file('shared/src/main/java') }
+		resources { srcDirs rootProject.file('../common/src/main/resources'), rootProject.file('shared/src/main/resources') }
+	}
+}
+
+def props = [version: project.version, mc_range: '>=1.21.11 <26']
+processResources {
+	inputs.properties props
+	filesMatching('fabric.mod.json') {
+		expand props
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 21
+}
+
+java {
+	withSourcesJar()
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
+}

@@ -1,0 +1,31 @@
+{
+	"schemaVersion": 1,
+	"id": "creativeversion",
+	"version": "${version}",
+	"name": "CreativeVersion",
+	"description": "Marks items that do not exist on the backend server version (ViaVersion setups).",
+	"authors": [
+		"xl1te"
+	],
+	"license": "MIT",
+	"icon": "assets/creativeversion/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"com.github.xl1te.creativeversion.CreativeVersionClient"
+		]
+	},
+	"mixins": [
+		{
+			"config": "creativeversion.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.0",
+		"minecraft": "${mc_range}",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
+
